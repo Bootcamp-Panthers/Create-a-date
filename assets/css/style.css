@@ -1,7 +1,32 @@
 header{
-    background-image: url("assets/images/dinner-image.jpg");
+    background-image: url("../images/dinner-image.jpg");
+    background-size: cover;
+    
+}
+
+.row{
+    text-align: left;
+
+}
+.input-field label {
+    color: white;
+}
+.datepicker{
+    color: white;
 }
 
 h1{
     text-align: center;
+    color: white;
 }
+
+.btn{
+    background-color: darkred;
+}
+
+.btn:hover{
+    background-color: tan;
+}
+
+
+  
