@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Create-A-Date</title>
 </head>
 
 
@@ -23,47 +23,45 @@
             </h1>
         </div>
         <div class="row">
-            <form>Search
-                <input type="text" name="search" value="location, postal code">
-            </form>
-            <input type="submit" value="Submit">
+
+            <div class="input-field col s4" id = "col1">
+                <input id="searchbar" type="search" class="validate">
+                <label for="search">City</label>
+            </div>
+            <div class="col s4" id = "col2">
+                <label for="datepicker"> Choose date here:</label>
+                <input type="text" class="datepicker">
+            </div>
+            <!-- <div class = "input-field col s4">
+                <input id="keywordSearch" type="search" class="validate">
+                <label for="search">keyword</label>
+            </div> -->
+
+            <div class="col s6">
+                <button class="btn waves-effect waves-light" type="submit" name="action" id = "submitButton">Submit</button>
+            </div>
+
         </div>
     </header>
-    
+
+    <div class = "row">
+        <div class = "col s4" id = "zomato">Zomato</div>
+        <div class = "col s4" id = "seatgeek">Seatgeek</div>
+        <div class = "col s4" id = "sum">summary</div>
+
+    </div>
     <div>
 
     </div>
-    
-    <footer class="page-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="black-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="black-text">Links</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#!"Panther Productions</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Are you there?</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-     
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-          </div>
-        </div>
-      </footer>
-    
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-      <script src="assets/javascript/project.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
+    <script src="assets/javascript/project.js"></script>
 
 </body>
 
