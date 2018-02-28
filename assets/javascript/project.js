@@ -20,7 +20,7 @@ $.ajax({
 
 
 
-
+/*
 $.ajax({
     url: "https://api.seatgeek.com/2/events?venue.state=CA&venue.city=irvine&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
     method: "GET"
@@ -36,4 +36,22 @@ $.ajax({
         console.log(response.events[i].venue.postal_code);
     }
 
+}); */
+
+$.ajax({
+    url: "https://api.seatgeek.com/2/events?&datetime_local.gte=2018-03-10T00:00:00&datetime_local.lte=2018-03-10T23:59:59&venue.state=CA&venue.city=irvine&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
+    method: "GET"
+}).then(function (response) {
+    for (var i = 0; i < response.events.length; i++) {
+        console.log(response);
+        console.log(response.events[i]);
+        console.log(response.events[i].datetime_utc);
+        console.log(response.events[i].title);
+        console.log(response.events[i].url);
+        console.log(response.events[i].venue.address);
+        console.log(response.events[i].venue.city);
+        console.log(response.events[i].venue.postal_code);
+    }
 });
+
+//https://api.seatgeek.com/2/list?use_v2=1&uuid=3ebc9d23-ed60-2484-4d19-7e5574ce26f1&horizontal_per_page=20&geoip=true&datetime_local.gte=2018-03-01T00:00:00&datetime_local.lte=2018-03-01T23:59:59&client_id=MTY2MnwxMzgzMzIwMTU4
