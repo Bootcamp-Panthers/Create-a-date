@@ -53,5 +53,5 @@ $.ajax({
         console.log(response.events[i].venue.postal_code);
     }
 });
-
+// Reference for seatgeek datetime
 //https://api.seatgeek.com/2/list?use_v2=1&uuid=3ebc9d23-ed60-2484-4d19-7e5574ce26f1&horizontal_per_page=20&geoip=true&datetime_local.gte=2018-03-01T00:00:00&datetime_local.lte=2018-03-01T23:59:59&client_id=MTY2MnwxMzgzMzIwMTU4
