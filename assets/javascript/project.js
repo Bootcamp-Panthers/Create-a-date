@@ -17,3 +17,23 @@ $.ajax({
     var momentString = momentObj.format('dddd, MMMM Do YYYY, h:mm:ss a');
     console.log(momentString);
 });
+
+
+
+
+$.ajax({
+    url: "https://api.seatgeek.com/2/events?venue.state=CA&venue.city=irvine&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
+    method: "GET"
+}).then(function (response) {
+
+    for (var i = 0; i < response.events.length; i++) {
+        console.log(response);
+        console.log(response.events[i]);
+        console.log(response.events[i].title);
+        console.log(response.events[i].url);
+        console.log(response.events[i].venue.address);
+        console.log(response.events[i].venue.city);
+        console.log(response.events[i].venue.postal_code);
+    }
+
+});
