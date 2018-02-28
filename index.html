@@ -8,24 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Create-A-Date</title>
 </head>
 
-<header>
-    <div class="row">
-        <h1>
-            Create-A-Date
-        </h1>
-    </div>
-    <div class="row">
-        <form>Search
-            <input type="text" name="search" value="location, postal code">
-        </form>
-        <input type="submit" value="Submit">
 
 <body>
     <header>
@@ -35,38 +23,55 @@
             </h1>
         </div>
         <div class="row">
-            <form>Search
-                <input type="text" name="search" value="location, postal code">
-            </form>
-            <input type="submit" value="Submit">
+            <div class="input-field col s4">
+                <input id="citySearch" type="search" class="validate">
+                <label for="search">City</label>
+            </div>
+            <div class="col s4">
+                <label for="datepicker"> Choose time here:</label>
+                <input type="text" class="datepicker">
+            </div>
+            <div class = "input-field col s4">
+                <input id="keywordSearch" type="search" class="validate">
+                <label for="search">keyword</label>
+            </div>
+
+            <div class="col s6">
+                <button class="btn waves-effect waves-light" type="submit" name="action" id = "submitButton">Submit</button>
+            </div>
         </div>
     </header>
+
+    <div class = "row">
+        <div class = "col s4" id = "zomatoCol">Zomato
+            <div class="card horizontal">
+                <div class="card-image">
+                  <img id = "zomImg">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <p> <span id="result1"></span> </p> 
+                    <p> <span id="result2"></span> </p> 
+                    <p> <span id="result3"></span> </p> 
+                    <!-- delete results of search later -->
+                  </div>
+                  <div class="card-action">
+                    <a href="#" class ="confirm">Confirm</a>
+                  </div>
+                </div>
+              </div>
+            
+                        
+        </div>
+        <div class = "col s4">Seatgeek</div>
+        <div class = "col s4">summary</div>
+
+    </div>
     <div>
 
     </div>
-</header>
 
-<body>
 
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
-                    <label for="icon_prefix">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">phone</i>
-                    <input id="icon_telephone" type="tel" class="validate">
-                    <label for="icon_telephone">Telephone</label>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
