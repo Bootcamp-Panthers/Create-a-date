@@ -13,7 +13,7 @@ $(".horizontal").hide();
 
 
 
-function displayCards(colName) {
+function displayZomato(data) {
     for (var i = 0; i < 10; i++) {
         var repeat = $("<div>");
         repeat.addClass("card")
@@ -22,13 +22,13 @@ function displayCards(colName) {
 
         var cardStack = $("<div class = 'card-stacked'>")
         var cardContent = $("<div class = 'card-content'>")
-        var showName = $("<p>").text("Resturant Name: ")
-        var showAddress = $("<p>").text("Address:  ")
-        var showCuisine = $("<p>").text("Cuisine:  ")
+        var showName = $("<p>").text("Resturant Name: " + data.restaurants[i].restaurant.name)
+        var showAddress = $("<p>").text("Address:  " + data.restaurants[i].restaurant.location["address"])
+        var showCuisine = $("<p>").text("Cuisine:  "+ data.restaurants[i].restaurant.cuisines)
         var showConfirm = $("<div class = 'card-action'>")
         var confirm = $("<a href='#' class ='confirm'>Confirm</a>")
         var showImage = $("<div class = 'card-image'>")
-        var image = $("<img src ='https://lorempixel.com/100/190/nature/6'>")
+        var image = $("<img src =" + data.restaurants[i].restaurant.featured_image + ">")
 
 
         $(repeat).append(showName);
@@ -49,16 +49,9 @@ function displayCards(colName) {
         $(cardStack).append(showConfirm);
         $(showConfirm).append(confirm);
         
-        $(colName).append(repeat);
+        $("#zomato").append(repeat);
     }
 }
-$("#submitButton").on("click", function () {
-    displayCards("#zomato")
-    displayCards("#seatgeek")
-
-    $(".horizontal").show();
-})
-
 function moveResults() {
     $("#card-action").on("click", function () {
 
@@ -147,14 +140,14 @@ $.ajax({
 
 
 $("#submitButton").on("click", function(event){
-    var locate = $("#citySearch").val();
+    var locate = $("#searchbar").val();
     console.log(locate);
     zomatoCITY();
     });
     
     
     function zomatoCITY(){
-        var locate = $("#citySearch").val();
+        var locate = $("#searchbar").val();
         $.ajax({
             url: "https://developers.zomato.com/api/v2.1/locations?query=" + locate,
             type: "GET",
@@ -169,19 +162,9 @@ $("#submitButton").on("click", function(event){
                 dataType: "json",
                 headers: {"user-key": "f01cb7831e9ebde3e857af1190a5f819"}
         
-            }).then(function (response2){
-                var zomResult = response2.restaurants;
-                for (i = 0; i < 10; i++){
-                    console.log(zomResult[i]);
-                    var zomName = zomResult[i].restaurant.name;
-                    var zomAddress = zomResult[i].restaurant.location[0];
-                    var zomCuisine = zomResult[i].restaurant.cuisines;
-                    // example of how to put information on card
-                    // var zomCard = $("<div>");
-                    // zomCard.addClass("card horizontal");
-                    // zomCard.text(zomName);
-                    // $("#zomatoCol").append(zomCard)
-                }
+            }).then(function (response){
+                console.log(response);
+                displayZomato(response);
             });
     
         });
