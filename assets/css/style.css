@@ -14,7 +14,16 @@ header{
 .datepicker{
     color: white;
 }
+.picker__date-display {
+    background-color:darkred;
+}
+.picker__weekday-display {
+    background-color:darkred;
+}
 
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color:darkred;
+}
 h1{
     text-align: center;
     color: white;
