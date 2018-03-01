@@ -38,5 +38,10 @@ h1{
     background-color: tan;
 }
 
-
+#modalButton{
+    text-align: center;
+}
   
+#divModal{
+    text-align: center;
+}
