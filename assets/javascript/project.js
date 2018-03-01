@@ -13,7 +13,7 @@ $(".horizontal").hide();
 $("#modalButton").hide();
 
 
-$("#modalButton").on('click', function(){
+$("#modalButton").on('click', function () {
     var zomatoModal = $("#" + sessionStorage.getItem('zomato')).children("div.card-stacked").children("div.card-content").children("p");
     $("#zomName").html(zomatoModal[0].outerText);
     $("#zomLoc").html(zomatoModal[1].outerText);
@@ -28,7 +28,7 @@ $("#modalButton").on('click', function(){
 function displayZomato(data) {
     $("#zomato").empty();
     for (var i = 0; i < 10; i++) {
-        var repeat = $("<div id='zomato"+ i +"'>");
+        var repeat = $("<div id='zomato" + i + "'>");
         repeat.addClass("card")
         repeat.addClass("horizontal")
 
@@ -75,14 +75,14 @@ function displayZomato(data) {
 function displaySeat(data) {
     $("#seatgeek").empty();
     for (var i = 0; i < 10; i++) {
-        var repeat = $("<div id='seatgeek"+ i +"'>");
+        var repeat = $("<div id='seatgeek" + i + "'>");
         repeat.addClass("card")
         repeat.addClass("horizontal")
 
         var dateString = $("<p>").text(data.events[i].datetime_utc);
         var momentObj = moment(dateString);
         var momentString = momentObj.format('dddd, MMMM Do YYYY, h:mm:ss a');
-        
+
         var cardStack = $("<div class = 'card-stacked'>")
         var cardContent = $("<div class = 'card-content'>")
         var showName = $("<p>").text(data.events[i].title)
