@@ -100,25 +100,15 @@ function displaySeat(data) {
     }
 }
 
-function moveResults() {
-    $("#card-action").on("click", function () {
-
-    })
-}
 
 
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
 
-function seatgeek() {
-    var datetime = $("#datePick").val();
-    var locate = $("#searchbar").val();
-    $.ajax({
-        url: "https://api.seatgeek.com/2/events?&datetime_local.gte="+ datetime +"T00:00:00&datetime_local.lte="+ datetime +"T23:59:59&venue.state=CA&venue.city="+locate+"&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        displaySeat(response);
-    });
-}
+
+
 
 // Reference for seatgeek datetime
 //https://api.seatgeek.com/2/list?use_v2=1&uuid=3ebc9d23-ed60-2484-4d19-7e5574ce26f1&horizontal_per_page=20&geoip=true&datetime_local.gte=2018-03-01T00:00:00&datetime_local.lte=2018-03-01T23:59:59&client_id=MTY2MnwxMzgzMzIwMTU4
@@ -171,5 +161,18 @@ function zomatoCITY() {
             displayZomato(response);
         });
 
+    });
+}
+
+
+function seatgeek() {
+    var datetime = $("#datePick").val();
+    var locate = $("#searchbar").val();
+    $.ajax({
+        url: "https://api.seatgeek.com/2/events?&datetime_local.gte="+ datetime +"T00:00:00&datetime_local.lte="+ datetime +"T23:59:59&venue.city="+locate+"&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        displaySeat(response);
     });
 }
