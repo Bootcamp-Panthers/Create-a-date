@@ -1,3 +1,4 @@
+
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -10,23 +11,38 @@ $('.datepicker').pickadate({
 
 var submit;
 $(".horizontal").hide();
+$("#modalButton").hide();
 
 
+$("#modalButton").on('click', function(){
+    var zomatoModal = $("#" + sessionStorage.getItem('zomato')).children("div.card-stacked").children("div.card-content").children("p");
+    $("#zomName").html(zomatoModal[0].outerText);
+    $("#zomLoc").html(zomatoModal[1].outerText);
+    $("#zomCui").html(zomatoModal[2].outerText);
+
+    var seatModal = $("#" + sessionStorage.getItem('seatgeek')).children("div.card-stacked").children("div.card-content").children("p");
+    $("#seatName").html(seatModal[0].outerText);
+    $("#seatLoc").html(seatModal[1].outerText);
+
+    console.log($("#" + sessionStorage.getItem('zomato')).children("div.card-stacked").children("div.card-content").children("p"));
+
+})
 
 function displayZomato(data) {
+    $("#zomato").empty();
     for (var i = 0; i < 10; i++) {
-        var repeat = $("<div>");
+        var repeat = $("<div id='zomato"+ i +"'>");
         repeat.addClass("card")
         repeat.addClass("horizontal")
 
-
+        var restName = data.restaurants[i].restaurant.name;
         var cardStack = $("<div class = 'card-stacked'>")
         var cardContent = $("<div class = 'card-content'>")
-        var showName = $("<p>").text("Resturant Name: " + data.restaurants[i].restaurant.name)
-        var showAddress = $("<p>").text("Address:  " + data.restaurants[i].restaurant.location["address"])
-        var showCuisine = $("<p>").text("Cuisine:  " + data.restaurants[i].restaurant.cuisines)
+        var showName = $("<p>").text(data.restaurants[i].restaurant.name)
+        var showAddress = $("<p>").text(data.restaurants[i].restaurant.location["address"])
+        var showCuisine = $("<p>").text(data.restaurants[i].restaurant.cuisines)
         var showConfirm = $("<div class = 'card-action'>")
-        var confirm = $("<a href='#' class ='confirm'>Confirm</a>")
+        var confirm = $("<a href = '#' class ='confirm' data-id = 'zomato" + i + "'>Select</a>")
         var showImage = $("<div class = 'card-image'>")
         var image = $("<img src =" + data.restaurants[i].restaurant.featured_image + ">")
 
@@ -51,29 +67,34 @@ function displayZomato(data) {
 
         $("#zomato").append(repeat);
     }
+
+    $(".confirm").on('click', function () {
+        sessionStorage.setItem('zomato', $(this).data('id'));
+        $("#modalContent").html(sessionStorage.getItem('zomato'));
+        console.log($(this));
+    })
 }
 
 
-
 function displaySeat(data) {
+    $("#seatgeek").empty();
     for (var i = 0; i < 10; i++) {
-        var repeat = $("<div>");
+        var repeat = $("<div id='seatgeek"+ i +"'>");
         repeat.addClass("card")
         repeat.addClass("horizontal")
 
+        var dateString = $("<p>").text(data.events[i].datetime_utc);
+        var momentObj = moment(dateString);
+        var momentString = momentObj.format('dddd, MMMM Do YYYY, h:mm:ss a');
+        
 
-
-        // console.log(response.events[i].datetime_utc);
-        // console.log(response.events[i].title);
-        // console.log(response.events[i].url);
-        // console.log(response.events[i].venue.address);
         var cardStack = $("<div class = 'card-stacked'>")
         var cardContent = $("<div class = 'card-content'>")
-        var showName = $("<p>").text("Event Name: " + data.events[i].title)
-        var showAddress = $("<p>").text("Address:  " + data.events[i].venue.address)
-        var showCuisine = $("<p>").html("Link:  " +"<a>"+ data.events[i].url+"</a>")
+        var showName = $("<p>").text(data.events[i].title)
+        var showAddress = $("<p>").text(data.events[i].venue.address)
+        var showCuisine = $("<p>").html("<a href='" + data.events[i].url + "'>Buy Tickets</a>")
         var showConfirm = $("<div class = 'card-action'>")
-        var confirm = $("<a href='#' class ='confirm'>Confirm</a>")
+        var confirm = $("<a href='#' class ='confirm1' data-id = 'seatgeek" + i + "'>Select</a>")
         var showImage = $("<div class = 'card-image'>")
         var image = $("<img src =''>")
 
@@ -88,6 +109,7 @@ function displaySeat(data) {
 
         $(cardContent).append(showName);
         $(cardContent).append(showAddress);
+        $(cardContent).append(momentString);
         $(cardContent).append(showCuisine);
 
         $(showImage).append(image);
@@ -98,6 +120,11 @@ function displaySeat(data) {
 
         $("#seatgeek").append(repeat);
     }
+
+    $(".confirm1").on('click', function () {
+        sessionStorage.setItem('seatgeek', $(this).data('id'));
+        console.log($(this));
+    })
 }
 
 function moveResults() {
@@ -112,7 +139,7 @@ function seatgeek() {
     var datetime = $("#datePick").val();
     var locate = $("#searchbar").val();
     $.ajax({
-        url: "https://api.seatgeek.com/2/events?&datetime_local.gte="+ datetime +"T00:00:00&datetime_local.lte="+ datetime +"T23:59:59&venue.state=CA&venue.city="+locate+"&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
+        url: "https://api.seatgeek.com/2/events?&datetime_local.gte=" + datetime + "T00:00:00&datetime_local.lte=" + datetime + "T23:59:59&venue.city=" + locate + "&client_id=NDMxMTUyMXwxNTE5Njg2MDU1Ljkx&client_secret=17b84706c152b783115f87b854b2bf4963fb5426ed37b6d41c51ce728715d710",
         method: "GET"
     }).then(function (response) {
         console.log(response);
@@ -147,6 +174,8 @@ function seatgeek() {
 $("#submitButton").on("click", function (event) {
     zomatoCITY();
     seatgeek();
+    $("#modalButton").show();
+
 });
 
 
@@ -173,3 +202,7 @@ function zomatoCITY() {
 
     });
 }
+
+$(document).ready(function () {
+    $('#modal1').modal();
+});
