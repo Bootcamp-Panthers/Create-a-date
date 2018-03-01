@@ -10,7 +10,6 @@
     <title>Create-A-Date</title>
 </head>
 
-
 <body>
     <header>
         <div class="row">
@@ -20,7 +19,6 @@
         </div>
         <div class="row">
 
-
             <div class="input-field col s4" id="col1">
                 <input id="searchbar" type="search" class="validate">
                 <label for="search">City</label>
@@ -29,11 +27,6 @@
                 <label for="datepicker"> Choose date here:</label>
                 <input id="datePick" type="text" class="datepicker">
             </div>
-            <!-- <div class = "input-field col s4">
-                <input id="keywordSearch" type="search" class="validate">
-                <label for="search">keyword</label>
-            </div> -->
-
 
             <div class="col s6">
                 <button class="btn waves-effect waves-light" type="submit" name="action" id="submitButton">Submit</button>
@@ -42,41 +35,27 @@
         </div>
     </header>
     <div id="divModal">
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id = 'modalButton'>Confirm Selection</a>
-        </div>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id='modalButton'>Confirm Selection</a>
+    </div>
     <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>Your Date!</h4>
-              <p>
-                
-                    <div>
-                            <h3 class="header">Your Dinner!</h3>
-        
-                            <p id='zomName'></p>
-                            <p id='zomLoc'></p>
-                            <p id='zomCui'></p>
-        
-        
-                        </div>
-        
-        
-                        <div>
-                            <h3 class="header">Your Show!</h3>
-
-                            <p id='seatName'></p>
-                            <p id="seatLoc"></p>
-                            <p id="seatLink"></p>
-        
-                        </div>
-                
-              </p>
-            </div>
-           
-          </div>
-
-
-            
-
+        <div class="modal-content">
+            <h4>Your Date!</h4>
+            <p>
+                <div>
+                    <h3 class="header">Your Dinner!</h3>
+                    <p id='zomName'></p>
+                    <p id='zomLoc'></p>
+                    <p id='zomCui'></p>
+                </div>
+                <div>
+                    <h3 class="header">Your Show!</h3>
+                    <p id='seatName'></p>
+                    <p id="seatLoc"></p>
+                    <p id="seatLink"></p>
+                </div>
+            </p>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col s6" id="zomato"></div>
@@ -90,11 +69,7 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-
     <script src="assets/javascript/project.js"></script>
 
 </body>
