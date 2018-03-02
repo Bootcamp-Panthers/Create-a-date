@@ -11,7 +11,6 @@ $('.datepicker').pickadate({
 $(".horizontal").hide();
 $("#modalButton").hide();
 
-
 $("#modalButton").on('click', function () {
     var zomatoModal = $("#" + sessionStorage.getItem('zomato')).children("div.card-stacked").children("div.card-content").children("p");
     $("#zomName").html(zomatoModal[0].outerText);
