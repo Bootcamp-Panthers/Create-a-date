@@ -1,4 +1,4 @@
-
+// this is a datepicker from materialize where user can pick date for their event.
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -8,11 +8,11 @@ $('.datepicker').pickadate({
     closeOnSelect: false, // Close upon selecting a date,
     format: 'yyyy-mm-dd'
 });
-
+// hides the cards and modal button
 $(".horizontal").hide();
 $("#modalButton").hide();
 
-
+// function for modal button where we store zomato and seatgeek data such as name, location and cuisine
 $("#modalButton").on('click', function(){
     var zomatoModal = $("#" + sessionStorage.getItem('zomato')).children("div.card-stacked").children("div.card-content").children("p");
     $("#zomName").html(zomatoModal[0].outerText);
@@ -24,14 +24,14 @@ $("#modalButton").on('click', function(){
     $("#seatLoc").html(seatModal[1].outerText);
 
 })
-
+// Created a function that displays the Zomato data in materialize as cards. 
 function displayZomato(data) {
     $("#zomato").empty();
     for (var i = 0; i < 10; i++) {
         var repeat = $("<div id='zomato"+ i +"'>");
         repeat.addClass("card")
         repeat.addClass("horizontal")
-
+        // set up the info for the cards, cards are based off of materialize UI
         var restName = data.restaurants[i].restaurant.name;
         var cardStack = $("<div class = 'card-stacked'>")
         var cardContent = $("<div class = 'card-content'>")
