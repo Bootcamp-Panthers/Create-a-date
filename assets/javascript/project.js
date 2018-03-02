@@ -12,7 +12,6 @@ $('.datepicker').pickadate({
 $(".horizontal").hide();
 $("#modalButton").hide();
 
-
 $("#modalButton").on('click', function () {
     var zomatoModal = $("#" + sessionStorage.getItem('zomato')).children("div.card-stacked").children("div.card-content").children("p");
     $("#zomName").html(zomatoModal[0].outerText);
@@ -27,6 +26,7 @@ $("#modalButton").on('click', function () {
 // Created a function that displays the Zomato data in materialize as cards. 
 function displayZomato(data) {
     $("#zomato").empty();
+    $("#zomato").html("<h3>Restaurants</h3>");
     for (var i = 0; i < 10; i++) {
         var repeat = $("<div id='zomato" + i + "'>");
         repeat.addClass("card")
@@ -74,6 +74,7 @@ function displayZomato(data) {
 
 function displaySeat(data) {
     $("#seatgeek").empty();
+    $("#seatgeek").html("<h3>Events</h3>")
     for (var i = 0; i < 10; i++) {
         var repeat = $("<div id='seatgeek" + i + "'>");
         repeat.addClass("card")
