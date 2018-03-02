@@ -1,4 +1,3 @@
-
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -27,6 +26,7 @@ $("#modalButton").on('click', function(){
 
 function displayZomato(data) {
     $("#zomato").empty();
+    $("#zomato").html("<h3>Restaurants</h3>");
     for (var i = 0; i < 10; i++) {
         var repeat = $("<div id='zomato"+ i +"'>");
         repeat.addClass("card")
@@ -74,6 +74,7 @@ function displayZomato(data) {
 
 function displaySeat(data) {
     $("#seatgeek").empty();
+    $("#seatgeek").html("<h3>Events</h3>")
     for (var i = 0; i < 10; i++) {
         var repeat = $("<div id='seatgeek"+ i +"'>");
         repeat.addClass("card")
